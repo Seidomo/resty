@@ -1,0 +1,13 @@
+@import './variables.scss';
+
+
+.App-header {
+  background-color: $background_color;
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 35px;
+  color: white;
+}
