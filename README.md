@@ -37,7 +37,7 @@ When the form is filled out, and the button is clicked, display the URL and the 
 * UML
 
 
-- ![UML](./resty/src/assets/lab26.png)
+- ![UML](./src/assets/lab26.png)
 
 
 
