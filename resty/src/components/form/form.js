@@ -14,15 +14,16 @@ class form extends React.Component{
         super();
     
     this.state = {
-      url: '',
+      url: [],
+      method: []
     };
     this.addUrl = this.addUrl.bind(this);
     }
 
     addUrl(){
         this.setState({
-            url : [...this.state.url, ''],
-            input: ''
+            url : [...this.state.url, this.state.input],
+            method: [...this.state.method, this.state.input]
         });
     }
 
