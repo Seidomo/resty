@@ -14,48 +14,52 @@ class form extends React.Component{
         super();
     
     this.state = {
-      url: [],
-      method: []
+      input: '',
+      method: 'GET'
     };
-    this.addUrl = this.addUrl.bind(this);
+    
     }
 
-    addUrl(){
+    addUrl = (e) => {
         this.setState({
-            url : [...this.state.url, this.state.input],
-            method: [...this.state.method, this.state.input]
+           input: e.target.value
         });
     }
 
-    addUrlWithForm = () =>{
+    addUrlWithForm = (e) =>{
         this.setState({
-            url: [...this.state.url, this.state.input]
+           method: e.target.value
         })
     }
 
-    checkChange = (e) =>{
+    checkChange = async (e) =>{
+        e.preventDefault();
         
-        this.setState({input: e.target.value})
-    }
+        const req = await fetch(this.state.input, {method: this.state.method, });
+       
+        const data = await req.json();
+        const header = req.headers;
+        this.props.updateResults(data, header)
+}
 
     render(){
         return(
             <div className="App-form">
-           <form>
+           <form onSubmit={this.checkChange}>
                <label> URL</label>
-               <input onChange = {this.checkChange} type= 'text' value= {this.state.input}/>
-               <button onClick = {this.addUrlWithForm}>GO</button>
+               <input onChange = {this.addUrl} type= 'text' value= {this.state.input}/>
+               <button>GO</button>
                
                
            </form>
-           <div className="App-div">
+           <form className="App-div">
            
-           <button onClick = {this.addUrlWithForm}>GET</button>
+           <button onClick = {this.addUrlWithForm} value= "GET">GET</button>
                <button onClick = {this.addUrlWithForm}>POST</button>
                <button onClick = {this.addUrlWithForm}>PUT</button>
                <button onClick = {this.addUrlWithForm}>DELETE</button>
      
-         </div>
+         </form>
             
           </div>
     
