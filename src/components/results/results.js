@@ -6,14 +6,18 @@ import './results.scss';
 
 export default function Results(props){
     return(
+      <div  className="App-mainbody">
       <div className ="App-Result">
-        <p>Count</p>
+        <ul>Count</ul>
         <JSONPretty  data={props.data.count}></JSONPretty>  
-        <p>Headers</p>
+        <ul className= "results">Headers</ul>
         <JSONPretty  data={props.data.headers}></JSONPretty>  
-        <p>Results</p>
+        <ul >Results</ul>
         <JSONPretty  data={props.data.results}></JSONPretty> 
-        {props.data.results.map((poke,i) => <span key={i}>{poke.name}</span>)}
+        
+        
+        </div>
+        
         </div>
     )
   }

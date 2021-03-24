@@ -20,19 +20,21 @@ class form extends React.Component{
     
     }
 
-    addUrl = (e) => {
+    handleInput = (e) => {
+        e.preventDefault();
         this.setState({
            input: e.target.value
         });
     }
 
-    addUrlWithForm = (e) =>{
+    handleMethod = (e) =>{
+        e.preventDefault();
         this.setState({
            method: e.target.value
         })
     }
 
-    checkChange = async (e) =>{
+    handleOnSubmit = async (e) =>{
         e.preventDefault();
         
         const req = await fetch(this.state.input, {method: this.state.method, });
@@ -45,19 +47,19 @@ class form extends React.Component{
     render(){
         return(
             <div className="App-form">
-           <form onSubmit={this.checkChange}>
+           <form onSubmit={this.handleOnSubmit}>
                <label> URL</label>
-               <input onChange = {this.addUrl} type= 'text' value= {this.state.input}/>
+               <input onChange = {this.handleInput} type= 'text' value= {this.state.input}/>
                <button>GO</button>
                
                
            </form>
            <form className="App-div">
            
-           <button onClick = {this.addUrlWithForm} value= "GET">GET</button>
-               <button onClick = {this.addUrlWithForm}>POST</button>
-               <button onClick = {this.addUrlWithForm}>PUT</button>
-               <button onClick = {this.addUrlWithForm}>DELETE</button>
+           <button onClick = {this.handleMethod} value= "GET">GET</button>
+               <button onClick = {this.handleMethod} value= "POST">POST</button>
+               <button onClick = {this.handleMethod} value= "PUT">PUT</button>
+               <button onClick = {this.handleMethod} value= "DELETE">DELETE</button>
      
          </form>
             
