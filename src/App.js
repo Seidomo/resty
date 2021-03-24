@@ -6,7 +6,8 @@ import React from 'react';
 import Header from './components/header/header.js';
 import Footer from './components/footer/footer.js';
 import Form from './components/form/form.js';
-import Main from './components/main/main.js';
+import { If, isObjectEmpty } from './components/if/if.js';
+// import Main from './components/main/main.js';
 import Results from './components/results/results.js';
 // Classes need to extend the React.Component class from the react library
 
@@ -26,12 +27,23 @@ class App extends React.Component {
 
   
 
-  updateResults = (data, headers) => {
+  updateResults = ( headers) => {
+
+    
+    let updatedHistory = headers.error ? [...this.state.results] : [...this.state.results, headers];
+
     this.setState({
-      results: data.results,
-      count: data.count,
       headers: headers,
-        });
+      count: headers.count,
+      results: updatedHistory,
+    }, () => {
+      localStorage.setItem('history', JSON.stringify(this.state.results));
+    });
+    // this.setState({
+    //   results: data.results,
+    //   count: data.count,
+    //   headers: headers,
+    //     });
 
       }
   // runs constantly in react, to render things to he DOM.
@@ -39,11 +51,14 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        <Form updateResults={this.updateResults}/>
+        <Form updateResults={this.updateResults} results={this.state.results}/>
 
         <div className="App-main">
         {/* <Main /> */}
+        <If condition = {isObjectEmpty(this.state.headers)} >
         <Results data= {this.state}/>
+        </If>
+        
         </div>
        
         <div>
@@ -60,25 +75,6 @@ class App extends React.Component {
   }
 }
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Click Seid and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+
 
 export default App;

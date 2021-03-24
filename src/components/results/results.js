@@ -9,9 +9,9 @@ export default function Results(props){
       <div  className="App-mainbody">
       <div className ="App-Result">
         <ul>Count</ul>
-        <JSONPretty  data={props.data.count}></JSONPretty>  
+        {/* <JSONPretty  data={props.data.count}></JSONPretty>   */}
         <ul className= "results">Headers</ul>
-        <JSONPretty  data={props.data.headers}></JSONPretty>  
+        {/* <JSONPretty  data={props.data.headers}></JSONPretty>   */}
         <ul >Results</ul>
         <JSONPretty  data={props.data.results}></JSONPretty> 
         
