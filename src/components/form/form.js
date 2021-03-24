@@ -34,6 +34,7 @@ class form extends React.Component{
     }
 
     checkChange = (e) =>{
+        
         this.setState({input: e.target.value})
     }
 
