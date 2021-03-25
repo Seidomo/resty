@@ -1,5 +1,27 @@
 # resty
 
+### lab - Componenet Composition
+
+
+- RESTy Phase : Add conditional rendering to RESTy
+
+
+#### Phase three requirments
+
+In this phase of the RESTy build, we will be adding some more fidelity to the application, including a menu, history, and an “in-progress” spinner.
+
+The following user stories detail the major functionality for this phase of the project.
+
+- As a user, I want to be able to use all REST methods so that I can do more than just get data
+- As a user, I want a simple list of all previous queries I’ve run so that I can easily see which queries I’ve run before
+- As a user, I want to click on an old query and have my selections appear in the form for me, so I don’t have to re-type them
+- As a user, I want to see a “loading” indicator while RESTy is fetching data so that I know it’s working on my request
+
+
+* UML Lab 28
+
+
+- ![UML](./src/assets/lab28.png)
 
 
 ### lab - Props and State
@@ -23,6 +45,13 @@ Application Flow:
 - Application fetches data from the URL given, with the method specified
 - Displays the response headers and results separately
 - Both headers and results should be “pretty printed” JSON
+
+
+
+* UML Lab 27
+
+
+- ![UML](./src/assets/lab27.png)
 
 
 ### lab - component based UI
@@ -59,7 +88,7 @@ When the form is filled out, and the button is clicked, display the URL and the 
 - *Jason Q*
 
 
-* UML
+* UML Lab 26
 
 
 - ![UML](./src/assets/lab26.png)

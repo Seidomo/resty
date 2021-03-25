@@ -24,12 +24,7 @@ class App extends React.Component {
   }
 
 
-  // log(num) {
-  //   console.log('Hey from component');
-  //   // in order for this to trigger a re-render we need to call a method passed down from React.Component
-  //   // this makes a re-render is triggered
-  //   this.setState({ number: num + 1 });
-  // }
+  
 
   updateResults = (data, headers) => {
     this.setState({

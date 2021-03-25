@@ -1,6 +1,21 @@
 .App-Result{
-    display: flex;
-  flex-direction: column;
   
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+}
+
+.results{
+ 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  
+}
+
+.App-mainbody{
+    
+    height: 630px;
+    margin: 5%;
+    margin-top: 30px;
+    margin-bottom: 0%;
+    border: solid black 1px;
 }
