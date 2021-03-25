@@ -11,9 +11,9 @@ class History extends React.Component {
           <ul>
             {this.props.results.map(item => 
               <li key={Math.random}>
-                <span className={`method ${item.method}`}>{`${item.method}`}</span>
-                <button className='history'>{`${item.input}`}</button>
-              </li>
+                <span className={`method ${item.method}`}>{`${item.method}`} : </span>
+                <span className='history'> {`${item.input}`}</span>
+                </li>
             )}
           </ul>
         </div>
