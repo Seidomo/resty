@@ -7,8 +7,9 @@ import Header from './components/header/header.js';
 import Footer from './components/footer/footer.js';
 import Form from './components/form/form.js';
 import { If, isObjectEmpty } from './components/if/if.js';
-// import Main from './components/main/main.js';
+import Main from './components/main/main.js';
 import Results from './components/results/results.js';
+import History from './components/history/history.js';
 // Classes need to extend the React.Component class from the react library
 
 class App extends React.Component {
@@ -19,7 +20,7 @@ class App extends React.Component {
     this.state = {
       count: 0,
       results: [],
-      headers: {},
+      req: {},
     }
    
   }
@@ -27,14 +28,14 @@ class App extends React.Component {
 
   
 
-  updateResults = ( headers) => {
+  updateResults = ( req) => {
 
     
-    let updatedHistory = headers.error ? [...this.state.results] : [...this.state.results, headers];
+    let updatedHistory = req.error ? [...this.state.results] : [...this.state.results, req];
 
     this.setState({
-      headers: headers,
-      count: headers.count,
+      req: req,
+      count: req.count,
       results: updatedHistory,
     }, () => {
       localStorage.setItem('history', JSON.stringify(this.state.results));
@@ -54,10 +55,11 @@ class App extends React.Component {
         <Form updateResults={this.updateResults} results={this.state.results}/>
 
         <div className="App-main">
-        {/* <Main /> */}
-        <If condition = {isObjectEmpty(this.state.headers)} >
+        <History results={this.state.results} />
+        <If condition = {isObjectEmpty(this.state.req)} >
         <Results data= {this.state}/>
         </If>
+        {/* <Main /> */}
         
         </div>
        

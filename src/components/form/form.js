@@ -15,15 +15,19 @@ class form extends React.Component{
     
     this.state = {
       input: '',
-      method: 'GET'
+      method: 'GET',
+      body: {},
+      error: {}
     };
     
     }
 
     handleInput = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
+        let {name, value} = e.target;
         this.setState({
-           input: e.target.value
+        //    input: e.target.value
+              [name]: value,
         });
     }
 
@@ -40,8 +44,15 @@ class form extends React.Component{
         const req = await fetch(this.state.input, {method: this.state.method, });
        
         const data = await req.json();
-        const header = req.headers;
-        this.props.updateResults(data, header)
+        // const header = req.headers;
+        // this.props.updateResults(data, header)
+        this.props.updateResults({
+            input: this.state.input,
+            method: this.state.method,
+            body: data,
+            error: null
+               
+        })
 }
 
     render(){
@@ -49,7 +60,7 @@ class form extends React.Component{
             <div className="App-form">
            <form onSubmit={this.handleOnSubmit}>
                <label> URL</label>
-               <input onChange = {this.handleInput} type= 'text' value= {this.state.input}/>
+               <input onChange = {this.handleInput} type= 'text' value= {this.state.input} name= "input"/>
                <button>GO</button>
                
                
